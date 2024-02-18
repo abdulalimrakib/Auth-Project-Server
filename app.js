@@ -12,8 +12,8 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cors({
-   origin:'http://localhost:5173', //localhost 
-  //origin:'https://something.com', //live link frontend 
+  //  origin:'http://localhost:5173', //localhost 
+  origin:'https://auth-project-client.vercel.app', //live link frontend 
   credentials:true,
 }))
 app.use(cookieParser());
