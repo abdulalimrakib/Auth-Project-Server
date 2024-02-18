@@ -12,7 +12,8 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cors({
-  origin:'https://auth-app0.netlify.app', 
+   origin:'http://localhost:5173', //localhost 
+  //origin:'https://something.com', //live link frontend 
   credentials:true,
 }))
 app.use(cookieParser());
