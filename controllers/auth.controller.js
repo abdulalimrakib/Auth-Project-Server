@@ -62,7 +62,12 @@ const postLogin = async (req, res, next) => {
       expiresIn: "2 days",
     });
     const { password: hashPassword, ...restData } = existUser._doc;
-    res.cookie("access_token", token).status(200).json({
+    res.cookie("access_token", token, {
+      httpOnly: true,
+      secure: true,
+      sameSite: 'none', // Setting SameSite attribute to None
+      expiresIn: 2 * 24 * 60 * 60 * 1000, // 2 days in milliseconds
+    }).status(200).json({
       success: true,
       userData: restData,
     });
@@ -82,7 +87,12 @@ const postDataFromGoogle = async (req, res, next) => {
       });
       const { password: hashPassword, ...restData } = existUser._doc;
       res
-        .cookie("access_token", token)
+        .cookie("access_token", token, {
+      httpOnly: true,
+      secure: true,
+      sameSite: 'none', // Setting SameSite attribute to None
+      expiresIn: 2 * 24 * 60 * 60 * 1000, // 2 days in milliseconds
+    })
         .status(200)
         .json({
           success: true,
@@ -100,7 +110,12 @@ const postDataFromGoogle = async (req, res, next) => {
         });
         const { password: hashPassword, ...restData } = newUser._doc;
         res
-          .cookie("access_token", token)
+          .cookie("access_token", token, {
+      httpOnly: true,
+      secure: true,
+      sameSite: 'none', // Setting SameSite attribute to None
+      expiresIn: 2 * 24 * 60 * 60 * 1000, // 2 days in milliseconds
+    })
           .status(200)
           .json({
             success: true,
